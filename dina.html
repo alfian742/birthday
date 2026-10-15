@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#fff3f7" />
+    <meta name="description" content="Sebuah kejutan ulang tahun kecil yang spesial untuk Dina. 🎁" />
+    <title>Selamat Ulang Tahun, Dina! 🎂</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --ink: #66344e;
+            --berry: #c22d6f;
+            --pink: #ff5392;
+            --muted: #866779;
+            --shadow: 0 30px 85px rgba(173, 61, 111, .17);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-width: 290px;
+            min-height: 100vh;
+            min-height: 100svh;
+            margin: 0;
+            padding: max(22px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(22px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+            display: grid;
+            place-items: center;
+            overflow-x: hidden;
+            position: relative;
+            font-family: ui-rounded, "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 15% 15%, #ffd4e2 0%, transparent 35%),
+                radial-gradient(circle at 88% 78%, #e8ddff 0%, transparent 36%),
+                linear-gradient(145deg, #fff8fa 0%, #ffeefa 54%, #fff6e8 100%);
+        }
+
+        .ambience {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .floaty {
+            position: absolute;
+            display: block;
+            opacity: .72;
+            filter: drop-shadow(0 8px 8px rgba(151, 80, 108, .08));
+            animation: float 6s ease-in-out infinite;
+            user-select: none;
+        }
+
+        .floaty:nth-child(1) {
+            left: 7%;
+            top: 12%;
+            font-size: 42px;
+            animation-delay: -.6s;
+        }
+
+        .floaty:nth-child(2) {
+            right: 9%;
+            top: 15%;
+            font-size: 35px;
+            animation-delay: -2s;
+        }
+
+        .floaty:nth-child(3) {
+            left: 10%;
+            bottom: 13%;
+            font-size: 32px;
+            animation-delay: -4s;
+        }
+
+        .floaty:nth-child(4) {
+            right: 9%;
+            bottom: 12%;
+            font-size: 42px;
+            animation-delay: -1s;
+        }
+
+        .floaty:nth-child(5) {
+            left: 24%;
+            top: 6%;
+            font-size: 23px;
+            animation-delay: -3s;
+        }
+
+        .floaty:nth-child(6) {
+            right: 22%;
+            bottom: 7%;
+            font-size: 25px;
+            animation-delay: -5s;
+        }
+
+        .card {
+            isolation: isolate;
+            position: relative;
+            z-index: 1;
+            width: min(100%, 555px);
+            border: 1px solid rgba(255, 255, 255, .95);
+            border-radius: clamp(26px, 5vw, 40px);
+            padding: clamp(25px, 5vw, 40px) clamp(18px, 5vw, 42px) 25px;
+            text-align: center;
+            background: rgba(255, 255, 255, .84);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: var(--shadow);
+            animation: enter .7s ease both;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 10px 15px;
+            border-radius: 999px;
+            border: 1px solid #ffdae6;
+            background: #fff1f6;
+            color: var(--berry);
+            font-weight: 800;
+            font-size: .71rem;
+            letter-spacing: .1em;
+        }
+
+        .cake-icon {
+            position: relative;
+            width: 116px;
+            height: 107px;
+            margin: 13px auto 2px;
+            display: grid;
+            place-items: center;
+            font-size: 83px;
+            line-height: 1;
+            animation: bounce 3.1s ease-in-out infinite;
+            filter: drop-shadow(0 11px 13px rgba(195, 49, 104, .12));
+        }
+
+        .cake-icon::before,
+        .cake-icon::after {
+            content: '✦';
+            position: absolute;
+            color: #ffbb55;
+            font-size: 24px;
+            animation: twinkle 1.8s infinite alternate;
+        }
+
+        .cake-icon::before {
+            left: -18px;
+            top: 27px;
+        }
+
+        .cake-icon::after {
+            right: -20px;
+            top: 10px;
+            animation-delay: -.9s;
+        }
+
+        h1 {
+            margin: 9px 0 10px;
+            color: #bd286d;
+            font-size: clamp(2rem, 6.3vw, 2.95rem);
+            letter-spacing: -.05em;
+            line-height: 1.16;
+        }
+
+        h1 span {
+            color: #ed5690;
+        }
+
+        .intro {
+            max-width: 425px;
+            margin: 0 auto;
+            color: var(--muted);
+            font-size: clamp(.97rem, 2.6vw, 1.08rem);
+            line-height: 1.8;
+        }
+
+        .question {
+            margin: 20px 0 3px;
+            color: #b62967;
+            font-weight: 850;
+            font-size: clamp(1.08rem, 3.5vw, 1.28rem);
+        }
+
+        .sub {
+            margin: 8px 0 0;
+            color: #997389;
+            font-size: .9rem;
+        }
+
+        .playground {
+            position: relative;
+            width: min(100%, 410px);
+            height: 190px;
+            margin: 6px auto 0;
+        }
+
+        button {
+            font: inherit;
+            cursor: pointer;
+        }
+
+        .gift-btn {
+            position: absolute;
+            left: 50%;
+            top: 55%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            min-width: 184px;
+            min-height: 58px;
+            padding: 15px 25px;
+            white-space: nowrap;
+            border: none;
+            border-radius: 18px;
+            color: #fff;
+            font-weight: 850;
+            font-size: 1rem;
+            letter-spacing: .04em;
+            background: linear-gradient(135deg, #ff78ac, #ec397c 58%, #cc2269);
+            box-shadow: 0 13px 28px rgba(235, 60, 122, .34), inset 0 1px rgba(255, 255, 255, .3);
+            transition: left .24s cubic-bezier(.2, .8, .2, 1), top .24s cubic-bezier(.2, .8, .2, 1), box-shadow .2s ease, filter .2s ease;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            user-select: none;
+        }
+
+        .gift-btn:hover {
+            filter: brightness(1.04);
+        }
+
+        .gift-btn:focus-visible,
+        .close:focus-visible {
+            outline: 3px solid #8f51d4;
+            outline-offset: 4px;
+        }
+
+        .gift-btn.ready {
+            box-shadow: 0 0 0 8px rgba(255, 85, 147, .12), 0 14px 32px rgba(235, 60, 122, .32);
+            animation: ready 1.1s ease-in-out infinite;
+        }
+
+        .hint {
+            min-height: 1.8em;
+            margin: -8px 0 18px;
+            font-size: .85rem;
+            color: #a26082;
+            font-weight: 600;
+        }
+
+        .footer {
+            padding-top: 17px;
+            border-top: 1px solid #f4dce8;
+            font-size: .78rem;
+            color: #a38a99;
+        }
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 20;
+            display: grid;
+            place-items: center;
+            padding: 16px;
+            overflow: auto;
+            background: rgba(62, 20, 51, .57);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .overlay[hidden] {
+            display: none;
+        }
+
+        .dialog {
+            z-index: 2;
+            position: relative;
+            width: min(100%, 460px);
+            max-height: calc(100svh - 32px);
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, .86);
+            border-radius: 30px;
+            padding: 24px clamp(17px, 5vw, 28px) 26px;
+            text-align: center;
+            background: #fffafc;
+            box-shadow: 0 32px 90px rgba(43, 8, 31, .32);
+            animation: pop .42s cubic-bezier(.15, .9, .3, 1.16) both;
+        }
+
+        .close {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 33px;
+            height: 33px;
+            display: grid;
+            place-items: center;
+            border: 0;
+            border-radius: 50%;
+            font-size: 21px;
+            line-height: 1;
+            color: #ac658a;
+            background: #ffedf4;
+        }
+
+        .surprise {
+            display: inline-block;
+            margin: 4px 0 7px;
+            padding: 6px 13px;
+            border-radius: 999px;
+            color: #b73571;
+            background: #ffe8f1;
+            font-size: .7rem;
+            letter-spacing: .17em;
+            font-weight: 800;
+        }
+
+        .dialog h2 {
+            margin: 7px 0 14px;
+            color: #b52a6a;
+            font-size: clamp(1.7rem, 5.9vw, 2.2rem);
+            line-height: 1.18;
+        }
+
+        .photo-frame {
+            position: relative;
+            overflow: hidden;
+            border: 6px solid #fff;
+            border-radius: 21px;
+            box-shadow: 0 12px 36px rgba(166, 71, 112, .17);
+            background: linear-gradient(145deg, #ffeaf3, #fff5fa);
+        }
+
+        .photo-frame img {
+            display: block;
+            width: 100%;
+            height: clamp(165px, 32vh, 230px);
+            object-fit: contain;
+            object-position: center;
+            background: linear-gradient(145deg, #ffe3ef, #fff7fb);
+            padding: 12px;
+        }
+
+        .photo-frame img[hidden] {
+            display: none;
+        }
+
+        .photo-fallback {
+            display: grid;
+            place-items: center;
+            height: 180px;
+            padding: 18px;
+            color: var(--berry);
+            line-height: 1.65;
+            background: #fff0f5;
+        }
+
+        .photo-fallback[hidden] {
+            display: none;
+        }
+
+        .dialog p {
+            margin: 17px auto 8px;
+            max-width: 350px;
+            color: #7e5e72;
+            line-height: 1.68;
+            font-size: .96rem;
+        }
+
+        .signature {
+            display: block;
+            margin-top: 10px;
+            color: #c6437f;
+            font-weight: 750;
+        }
+
+        .tiny-note {
+            margin-top: 10px;
+            font-size: .72rem;
+            color: #b49ca9;
+        }
+
+        .confetti {
+            pointer-events: none;
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .confetti span {
+            position: absolute;
+            top: -12%;
+            font-size: 23px;
+            animation: rain 3.4s linear infinite;
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        @keyframes enter {
+            from {
+                opacity: 0;
+                transform: translateY(14px) scale(.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        @keyframes pop {
+            from {
+                opacity: 0;
+                transform: translateY(26px) scale(.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        @keyframes float {
+            50% {
+                transform: translateY(-20px) rotate(9deg);
+            }
+        }
+
+        @keyframes bounce {
+            50% {
+                transform: translateY(-7px) rotate(-3deg);
+            }
+        }
+
+        @keyframes twinkle {
+            to {
+                opacity: .3;
+                transform: scale(.6) rotate(25deg);
+            }
+        }
+
+        @keyframes ready {
+            50% {
+                box-shadow: 0 0 0 13px rgba(255, 85, 147, .06), 0 16px 34px rgba(235, 60, 122, .35);
+            }
+        }
+
+        @keyframes rain {
+            to {
+                transform: translateY(116vh) rotate(570deg);
+                opacity: .2;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .card {
+                padding: 25px 17px 21px;
+            }
+
+            .cake-icon {
+                font-size: 76px;
+                height: 94px;
+            }
+
+            .playground {
+                height: 175px;
+            }
+
+            .gift-btn {
+                min-width: 173px;
+                padding-inline: 17px;
+            }
+        }
+
+        @media (max-height: 670px) and (min-width: 601px) {
+            .cake-icon {
+                height: 78px;
+                font-size: 64px;
+                margin-top: 5px;
+            }
+
+            .playground {
+                height: 135px;
+            }
+
+            .card {
+                padding-block: 19px;
+            }
+
+            .intro {
+                line-height: 1.5;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ambience" aria-hidden="true">
+        <span class="floaty">🎈</span><span class="floaty">✨</span>
+        <span class="floaty">🌸</span><span class="floaty">🎉</span>
+        <span class="floaty">⭐</span><span class="floaty">💖</span>
+    </div>
+
+    <main class="card">
+        <!-- <div class="eyebrow">🎀 KEJUTAN SPESIAL UNTUK DINA</div> -->
+        <div class="cake-icon" aria-hidden="true">🎂</div>
+        <h1>Happy Birthday,<br><span>Dina!</span> 🥳</h1>
+        <p class="intro">Hari ini adalah hari spesialmu! Semoga bertambahnya usia membawa lebih banyak kebahagiaan,
+            kesehatan, dan segala hal baik yang kamu impikan. 💕</p>
+        <p class="question">Psst... ada kado kecil buat kamu! 🎁</p>
+        <!-- <p class="sub">Tapi kadonya agak jahil. Berani coba buka? 😜</p> -->
+
+        <div class="playground" id="playground">
+            <button class="gift-btn" id="gift-btn" type="button" aria-describedby="hint">🎁 BUKA KADO</button>
+        </div>
+        <p class="hint" id="hint" role="status" aria-live="polite">Arahkan kursor ke kadonya, ya! ✨</p>
+        <div class="footer">Ada sedikit kejutan dan banyak doa baik untukmu. ♡</div>
+    </main>
+
+    <div class="overlay" id="overlay" hidden>
+        <div class="confetti" id="confetti" aria-hidden="true"></div>
+        <section class="dialog" role="dialog" aria-modal="true" aria-labelledby="surprise-title"
+            aria-describedby="surprise-message" tabindex="-1" id="dialog">
+            <button class="close" id="close" type="button" aria-label="Tutup kejutan">×</button>
+            <div class="surprise">✨ SURPRISE! ✨</div>
+            <h2 id="surprise-title">Selamat Ulang Tahun, Dina! 🎉</h2>
+            <div class="photo-frame">
+                <img id="birthday-photo" src="https://c.tenor.com/Z8ezUHZzcLoAAAAC/love.gif"
+                    alt="Animasi bear lucu untuk Dina" referrerpolicy="no-referrer" />
+                <div class="photo-fallback" id="photo-fallback" hidden>🐻💖<br>Bear-nya lagi malu
+                    muncul.<br><small>Periksa
+                        koneksi internet ya.</small></div>
+            </div>
+            <p id="surprise-message">Semoga hari-harimu selalu penuh tawa, langkahmu dimudahkan, dan semua harapan
+                baikmu satu
+                per satu menjadi nyata. Tetap jadi Dina yang hebat dan membahagiakan! 💗</p>
+            <span class="signature">With lots of good wishes 💌</span>
+            <!-- <div class="tiny-note">Pop-up ini dilengkapi konfeti dan musik saat terbuka.</div> -->
+        </section>
+    </div>
+
+    <script>
+        'use strict';
+        const playground = document.getElementById('playground');
+        const giftButton = document.getElementById('gift-btn');
+        const hint = document.getElementById('hint');
+        const overlay = document.getElementById('overlay');
+        const dialog = document.getElementById('dialog');
+        const closeButton = document.getElementById('close');
+        const confetti = document.getElementById('confetti');
+        const photo = document.getElementById('birthday-photo');
+        const photoFallback = document.getElementById('photo-fallback');
+
+        let hoverAttempts = 0;
+        let unlocked = false;
+        let opened = false;
+        let lastHoverAttempt = -10000;
+        let audioCtx = null;
+        let activeOscillators = [];
+        let activeTimeouts = [];
+
+        photo.addEventListener('error', () => {
+            photo.hidden = true;
+            photoFallback.hidden = false;
+        });
+
+        function placeGiftAway(pointerEvent) {
+            const width = playground.clientWidth;
+            const height = playground.clientHeight;
+            const bw = giftButton.offsetWidth;
+            const bh = giftButton.offsetHeight;
+            const pad = 8;
+            const right = Math.max(pad, width - bw - pad);
+            const bottom = Math.max(pad, height - bh - pad);
+            const spots = [
+                [pad, pad], [right, pad], [pad, bottom], [right, bottom],
+                [Math.max(pad, (width - bw) / 2), pad],
+                [Math.max(pad, (width - bw) / 2), bottom]
+            ];
+            const rect = playground.getBoundingClientRect();
+            const current = giftButton.getBoundingClientRect();
+            const pointerX = pointerEvent && Number.isFinite(pointerEvent.clientX) ? pointerEvent.clientX : current.left + bw / 2;
+            const pointerY = pointerEvent && Number.isFinite(pointerEvent.clientY) ? pointerEvent.clientY : current.top + bh / 2;
+            const ranked = spots.map(([x, y]) => ({
+                x, y,
+                distance: Math.hypot(rect.left + x + bw / 2 - pointerX, rect.top + y + bh / 2 - pointerY)
+            })).sort((a, b) => b.distance - a.distance);
+            const next = ranked[(hoverAttempts - 1) % Math.min(3, ranked.length)] || ranked[0];
+            giftButton.style.transform = 'none';
+            giftButton.style.left = Math.round(next.x) + 'px';
+            giftButton.style.top = Math.round(next.y) + 'px';
+        }
+
+        function setHint(message) {
+            hint.textContent = message;
+        }
+
+        function unlockDesktop() {
+            unlocked = true;
+            giftButton.classList.add('ready');
+            setHint('Nah, sekarang kadonya diam... cepat klik sebelum kabur lagi! 🎉');
+        }
+
+        function desktopHoverAttempt(event) {
+            if (unlocked || opened) return;
+            hoverAttempts += 1;
+            if (hoverAttempts === 1) {
+                setHint('Eits, kadonya malu-malu... 😆');
+                placeGiftAway(event);
+            } else if (hoverAttempts === 2) {
+                setHint('Masih belum ketangkap... coba lagi ya 😜');
+                placeGiftAway(event);
+            } else if (hoverAttempts === 3) {
+                setHint('Wah, hampir berhasil... kadonya makin panik 🤭');
+                placeGiftAway(event);
+            } else if (hoverAttempts === 4) {
+                setHint('Sedikit lagi... kadonya capek lari 🥹');
+                placeGiftAway(event);
+            } else {
+                unlockDesktop();
+            }
+        }
+
+        function mobileTapAttempt(event) {
+            if (opened) return;
+            if (unlocked) {
+                openGift();
+                return;
+            }
+            hoverAttempts += 1;
+            if (hoverAttempts < 5) {
+                const messages = [
+                    'Hehe, kadonya menghindar dulu 😝',
+                    'Masih gesit nih... coba lagi ya ✨',
+                    'Sedikit lagi ketangkap 🤭',
+                    'Nah, satu kali lagi pasti bisa 💖'
+                ];
+                setHint(messages[Math.min(hoverAttempts - 1, messages.length - 1)]);
+                placeGiftAway(event);
+            } else {
+                unlocked = true;
+                giftButton.classList.add('ready');
+                setHint('Dapet! Kadonya kebuka! 🎉');
+                openGift();
+            }
+        }
+
+        function clearAudio() {
+            activeTimeouts.forEach(id => clearTimeout(id));
+            activeTimeouts = [];
+            activeOscillators.forEach(item => {
+                try { item.osc.stop(); } catch (e) { }
+                try { item.osc.disconnect(); } catch (e) { }
+                try { item.gain.disconnect(); } catch (e) { }
+            });
+            activeOscillators = [];
+        }
+
+        function playBirthdayTune() {
+            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+            if (!AudioContextClass) return;
+            if (!audioCtx) audioCtx = new AudioContextClass();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            clearAudio();
+
+            const now = audioCtx.currentTime + 0.03;
+            const notes = [
+                [392.00, 0.28], [392.00, 0.18], [440.00, 0.40], [392.00, 0.40], [523.25, 0.40], [493.88, 0.72],
+                [392.00, 0.28], [392.00, 0.18], [440.00, 0.40], [392.00, 0.40], [587.33, 0.40], [523.25, 0.72],
+                [392.00, 0.28], [392.00, 0.18], [783.99, 0.40], [659.25, 0.40], [523.25, 0.40], [493.88, 0.40], [440.00, 0.78],
+                [698.46, 0.28], [698.46, 0.18], [659.25, 0.40], [523.25, 0.40], [587.33, 0.40], [523.25, 0.92]
+            ];
+            let cursor = now;
+            notes.forEach(([freq, dur], index) => {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = index % 4 === 0 ? 'triangle' : 'sine';
+                osc.frequency.setValueAtTime(freq, cursor);
+                gain.gain.setValueAtTime(0.0001, cursor);
+                gain.gain.exponentialRampToValueAtTime(0.07, cursor + 0.03);
+                gain.gain.exponentialRampToValueAtTime(0.0001, cursor + dur);
+                osc.connect(gain).connect(audioCtx.destination);
+                osc.start(cursor);
+                osc.stop(cursor + dur + 0.03);
+                activeOscillators.push({ osc, gain });
+                cursor += dur + 0.04;
+            });
+        }
+
+        function launchConfetti() {
+            confetti.replaceChildren();
+            const bits = ['🎉', '✨', '💗', '🎊', '🌸', '⭐', '🎈', '💖'];
+            for (let i = 0; i < 42; i++) {
+                const piece = document.createElement('span');
+                piece.textContent = bits[i % bits.length];
+                piece.style.left = (Math.random() * 100) + '%';
+                piece.style.animationDelay = (-Math.random() * 3.5) + 's';
+                piece.style.animationDuration = (2.4 + Math.random() * 2.6) + 's';
+                confetti.appendChild(piece);
+            }
+        }
+
+        function openGift() {
+            if (opened) return;
+            opened = true;
+            overlay.hidden = false;
+            document.body.classList.add('modal-open');
+            launchConfetti();
+            playBirthdayTune();
+            closeButton.focus();
+        }
+
+        function closeGift() {
+            if (!opened) return;
+            opened = false;
+            overlay.hidden = true;
+            document.body.classList.remove('modal-open');
+            clearAudio();
+            giftButton.focus({ preventScroll: true });
+        }
+
+        giftButton.addEventListener('pointerenter', event => {
+            if (event.pointerType === 'mouse' && !opened && !unlocked) {
+                const now = performance.now();
+                if (now - lastHoverAttempt < 320) return;
+                lastHoverAttempt = now;
+                desktopHoverAttempt(event);
+            }
+        });
+
+        giftButton.addEventListener('pointerdown', event => {
+            if (event.pointerType === 'touch' || event.pointerType === 'pen') {
+                event.preventDefault();
+                mobileTapAttempt(event);
+            }
+        });
+
+        giftButton.addEventListener('click', event => {
+            if (event.pointerType === 'touch' || event.pointerType === 'pen') return;
+            if (unlocked) {
+                openGift();
+            }
+        });
+
+        closeButton.addEventListener('click', closeGift);
+        overlay.addEventListener('click', event => {
+            if (event.target === overlay || event.target === confetti) closeGift();
+        });
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && opened) closeGift();
+            if (event.key === 'Tab' && opened) {
+                const targets = [...dialog.querySelectorAll('button, a[href]')];
+                const current = targets.indexOf(document.activeElement);
+                if (targets.length && ((current === targets.length - 1 && !event.shiftKey) || (current === 0 && event.shiftKey))) {
+                    event.preventDefault();
+                    targets[event.shiftKey ? targets.length - 1 : 0].focus();
+                }
+            }
+            if ((event.key === 'Enter' || event.key === ' ') && document.activeElement === giftButton && unlocked && !opened) {
+                event.preventDefault();
+                openGift();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (!giftButton.style.left || !giftButton.style.left.endsWith('px')) return;
+            const x = Math.max(7, Math.min(parseFloat(giftButton.style.left) || 0, playground.clientWidth - giftButton.offsetWidth - 7));
+            const y = Math.max(7, Math.min(parseFloat(giftButton.style.top) || 0, playground.clientHeight - giftButton.offsetHeight - 7));
+            giftButton.style.left = x + 'px';
+            giftButton.style.top = y + 'px';
+        });
+    </script>
+</body>
+
+</html>
